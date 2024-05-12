@@ -1,0 +1,8 @@
+cmd Gozo {
+    stampa "spaca"
+    stampa (jonta 22 4)
+
+    return (jonta 2 6)
+}
+
+stampa (Gozo)
