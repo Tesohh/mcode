@@ -30,6 +30,14 @@ public class StatusBar extends JPanel {
         }
     }
 
+    public void updateStyle() {
+        setBackground(State.stylesheet.statusbarBg);
+
+        for (var component : this.getComponents()) {
+            component.setForeground(State.stylesheet.statusbarFg);
+        }
+    }
+
     public void update() {
         State.buffer.ifPresentOrElse(
             b -> {

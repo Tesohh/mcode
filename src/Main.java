@@ -1,6 +1,8 @@
 import java.util.Optional;
 
 import javax.swing.*;
+
+import grammar.Stylesheets;
 import state.Buffer;
 import state.State;
 import gui.App;
@@ -10,7 +12,10 @@ public class Main extends JFrame {
         super("mcode");
 
         State.buffer = Optional.of(new Buffer("example.tr"));
+        State.stylesheet = new Stylesheets().rosepine;
         State.app = new App();
+        State.app.editor.updateStyle();
+        State.app.status.updateStyle();
 
         setIconImage(new ImageIcon("icon.png").getImage());
         add(State.app);
@@ -20,8 +25,6 @@ public class Main extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new Main();
-        });        
+        SwingUtilities.invokeLater(Main::new);
     }
 }
