@@ -3,6 +3,7 @@ package commands;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import grammar.Stylesheets;
 import state.State;
 import state.Buffer;
 
@@ -26,7 +27,19 @@ public class Commands {
                 },
             () -> {}
             );
+        }),
+        new Command("styleforward", "meta alt T", e -> {
+            System.out.println("meta alt t");
+            int index = 0;
+            for (int i=0; i < Stylesheets.order.length; i++) {
+                if (Stylesheets.order[i] == State.stylesheet) { index = i; }
+            }
 
+            index += 1;
+            if (index >= Stylesheets.order.length) index = 0;
+            State.stylesheet = Stylesheets.order[index];
+            State.app.editor.updateStyle();
+            State.app.status.updateStyle();
         })
     };
 }

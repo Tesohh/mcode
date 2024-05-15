@@ -4,7 +4,7 @@ import javax.swing.text.StyleContext;
 import java.awt.*;
 
 public class Stylesheets {
-    public Stylesheet rosepine = new Stylesheet(
+    public static Stylesheet rosepine = new Stylesheet(
             new Stylish("arithmetic", Stylish.getColor("#9ccfd8"), "Noteworthy"),
             new Stylish("comparison", Stylish.getColor("#31748f"), "Phosphate"),
             new Stylish("primitives", Stylish.getColor("#c4a7e7"), "Party LET", 32),
@@ -18,7 +18,7 @@ public class Stylesheets {
             Stylish.getColor("#e0def4")
             );
 
-    public Stylesheet terminal = new Stylesheet(
+    public static Stylesheet terminal = new Stylesheet(
             new Stylish("arithmetic", Stylish.getColor("#00FF00"), "Noteworthy"),
             new Stylish("comparison", Stylish.getColor("#00FF00"), "Phosphate"),
             new Stylish("primitives", Stylish.getColor("#00FF00"), "Party LET", 32),
@@ -31,6 +31,8 @@ public class Stylesheets {
             Stylish.getColor("#000000"),
             Stylish.getColor("#00FF00")
     );
+
+    public static Stylesheet[] order = {rosepine, terminal};
 
     public Stylesheets() {}
 }

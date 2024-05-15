@@ -48,6 +48,8 @@ public class Editor extends JTextPane {
     public void updateStyle() {
         setBackground(State.stylesheet.bg);
         setCaretColor(State.stylesheet.fg.color);
+        SyntaxHighlighter.updateStyles();
+        SyntaxHighlighter.updateHighlighting(this.getStyledDocument());
     }
 }
 

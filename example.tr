@@ -2,6 +2,7 @@ cmd Gozo {
     stampa "spaca"  # stampa una stringa "spaca"
     stampa (jonta 22 4) # addiziona 22 a 4 e stampa il risultato
     retorn (jonta 2 6) # ritorna la somma di 2 e 6
-}
-	
+	retorn (jonta) # # aaaaaa
 stampa (Gozo)
+stampa "sadji"
+stampa (zani "piedi")

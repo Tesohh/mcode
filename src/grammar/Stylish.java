@@ -26,10 +26,14 @@ public class Stylish {
 
     public Style toStyle(StyleContext context) {
         var style = context.addStyle(name, null);
+        updateStyle(style);
+        return style;
+    }
+
+    public void updateStyle(Style style) {
         StyleConstants.setForeground(style, color);
         StyleConstants.setFontFamily(style, font);
         StyleConstants.setFontSize(style, size);
-        return style;
     }
 
     public static Color getColor(String hexColor) {
