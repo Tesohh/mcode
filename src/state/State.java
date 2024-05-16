@@ -11,4 +11,5 @@ public class State {
     static public Optional<Buffer> buffer;
     static public Stylesheet stylesheet;
     static public App app;
+    static public Settings settings = new Settings();
 }

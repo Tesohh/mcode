@@ -40,6 +40,30 @@ public class Commands {
             State.stylesheet = Stylesheets.order[index];
             State.app.editor.updateStyle();
             State.app.status.updateStyle();
+        }),
+
+        new Command("execute", "meta E", e -> {
+            var os = System.getProperty("os.name").toLowerCase();
+            var builder = new ProcessBuilder();
+
+            State.buffer.ifPresent(buffer -> {
+                if (os.startsWith("mac")) {
+                    var script = String.format("tell application \"Terminal\" to do script \"%s %s\"", State.settings.torcolPath.toAbsolutePath(), buffer.path.toAbsolutePath());
+                    System.out.println(script);
+                    builder.command("osascript", "-e", script);
+                } else if (os.startsWith("windows")) {
+                    var script = "";
+                    builder.command("cmd", "/c", "start", "cmd", "/k", script);
+                }
+
+                try {
+                    builder.start();
+                } catch (IOException err) {
+                    err.printStackTrace();
+                }
+            });
+
+
         })
     };
 }
