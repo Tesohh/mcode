@@ -11,7 +11,7 @@ import javax.swing.*;
 
 public class Commands {
     public static Command[] commands = {
-        new Command("write", "meta S", e -> {
+        new Command("write", "ctrl S", e -> {
             State.buffer.ifPresentOrElse(
                 b -> {
                     try {
@@ -28,8 +28,7 @@ public class Commands {
             () -> {}
             );
         }),
-        new Command("styleforward", "meta alt T", e -> {
-            System.out.println("meta alt t");
+        new Command("styleforward", "ctrl alt T", e -> {
             int index = 0;
             for (int i=0; i < Stylesheets.order.length; i++) {
                 if (Stylesheets.order[i] == State.stylesheet) { index = i; }
@@ -42,7 +41,7 @@ public class Commands {
             State.app.status.updateStyle();
         }),
 
-        new Command("execute", "meta E", e -> {
+        new Command("execute", "ctrl E", e -> {
             var os = System.getProperty("os.name").toLowerCase();
             var builder = new ProcessBuilder();
 
@@ -52,7 +51,7 @@ public class Commands {
                     System.out.println(script);
                     builder.command("osascript", "-e", script);
                 } else if (os.startsWith("windows")) {
-                    var script = "";
+                    var script = String.format("%s %s", State.settings.torcolPath.toAbsolutePath(), buffer.path.toAbsolutePath());
                     builder.command("cmd", "/c", "start", "cmd", "/k", script);
                 }
 
